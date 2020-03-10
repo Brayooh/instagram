@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth import logout
 from .forms import *
 from .emails import send_welcome_email
 from .models import User, Profile, Post,   Comment, Following
@@ -30,6 +31,10 @@ def registration(request):
         'form':form,
     }
     return render(request, 'users/register.html', context)
+
+@login_required
+def logout_view(request):
+    logout(request, 'users/login.html')
 
 
 @login_required
