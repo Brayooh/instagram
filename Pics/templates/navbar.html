@@ -1,8 +1,9 @@
+{% extends 'base.html' %}
 <nav class=" nav-tabs sticky-top  navbar-expand-sm bg-light ">
 
     <ul class="nav sticky-top" id="navId">
       <li class="nav-item">
-        <a style="font-family:Architects Daughter; font-size: 23px; color: orangered;" href="{% url 'posts' %}" class="nav-link active">instagramMOD</a>
+        <a style="font-family:Architects Daughter; font-size: 23px; color: rgb(0, 0, 0);" href="{% url 'posts' %}" class="nav-link active fa fa-instagram">instagramMOD</a>
       </li>
       {% if user.is_authenticated %}
       <li class="nav-item">
