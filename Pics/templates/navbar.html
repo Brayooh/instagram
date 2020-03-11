@@ -5,7 +5,6 @@
       <li class="nav-item">
         <a style="font-family:Architects Daughter; font-size: 23px; color: rgb(0, 0, 0);" href="{% url 'posts' %}" class="nav-link active fa fa-instagram">instagramMOD</a>
       </li>
-      {% if current_user.is_authenticated %}
       <li class="nav-item">
         <a style="font-family: Kalam; font-size: 22px; color: rgb(168, 97, 97);" href="{% url 'createpost' %}" class="nav-link">post</a>
       </li>
@@ -36,7 +35,6 @@
     
   </div>
 </nav>
-{% endif %}
 
 <script>
   $('#navId a').click(e => {
