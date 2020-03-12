@@ -23,8 +23,7 @@ def registration(request):
                 messages.success(request, f'Account has been created successfully!')
             except:
                 print('error')
-            return redirect('login')
-
+            return redirect('login') 
     else:
         form = RegisterForm()
     context = {
@@ -94,6 +93,7 @@ def comment(request, post_id):
 
 
 @login_required
+
 def commenting(request, post_id):
     posts = Post.objects.get(pk=post_id)
     context ={
