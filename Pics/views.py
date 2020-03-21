@@ -73,7 +73,7 @@ def post_create(request):
     }
     return render(request, 'post_create.html', context)
 
-@login_required
+
 def comment(request, post_id):
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
