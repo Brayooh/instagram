@@ -21,72 +21,70 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6">
-  {% for post in posts %}
+        {% for post in posts %}
         <div class="card">
-          <div class="card-header" style="border: 0; background-color: rgb(255, 255, 255);">
-            <h1 style="font-size: 24px;"><img class="rounded-circle account-profile" style="width: 50px; height: 50px;"
-                src="{{ post.author.profile.image.url }}" alt=".img"> {{post.author}}</h1>
-          <img class="card-img-top img-fluid" src="{{post.image.url}}" data-toggle="modal" type="button"
-          data-target="#launch_image" alt="post">
-          <div class="card-body">
-          
-            
-          <div style="background-color: rgb(255, 255, 255);;">
-            <h4 class="card-title">{{post.caption}}</h4>
-            <p>{{post.created_date|timesince}} ago</p>
-            <a href="{% url 'commenting' post.id%}"><i class="fa fa-comment"></i>
-              {{post.comments.all.count}} {{post.comments.all.pluralize}}</a>
-            <div class="count">
-              {% if post.likes.id == user.id %}
-              <a class="text-danger ml-3" href="{% url 'likes' post.id%}"><i
-                  class="fa fa-heart "></i>{{post.likes.count}}</a>
-              {% else %}
-              <a class="text-info ml-2" href="{% url 'likes' post.id%}"><i class="fa fa-heart "></i>
-                {{post.likes.count}}
-              </a>
-              {% endif %}
-              <form action="{% url 'comment' post.id %}" method="post">
-                {% csrf_token %}
-                {{comment_form|crispy}}
-                <input type="submit" class="btn btn-info" value="Comment">
-              </form>
-            </div>
-          </div>
+          <div class="card-header" style="border: 0; background-color: rgb(61, 61, 61); text-transform: capitalize;">
+            <h1 style="font-size: 24px;"><img class="rounded-circle account-profile" style="width: 45px; height: 45px;"
+                src="{{ post.author.profile.image.url }}" alt="">{{post.author}}</h1>
+
+            <img class="card-img-top img-fluid" src="{{post.image.url}}" data-toggle="modal" type="button"
+              data-target="#launch_image" alt="post">
+            <div class="card-body">
 
 
-          <div class="modal fade " id="launch_image" tabindex="-1" role="dialog" aria-labelledby="launch_image"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <img style="width: max-content; height: max-content; text-align: center;" src="{{post.image.url}}"
-                    alt="img">
+              <div>
+                <h4 class="card-title">{{post.caption}}</h4>
+                <p>{{post.created_date|timesince}} ago</p>
+                <a href="{% url 'commenting' post.id%}" style="color: rgb(255, 187, 0);"><i
+                    class="fa fa-comment text-warning"></i>
+                  {{post.comments.all.count}} {{post.comments.all.pluralize}}</a>
+                <div class="count">
+                  {% if post.likes.id == user.id %}
+                  <a class="text-danger ml-3" href="{% url 'likes' post.id%}"><i
+                      class="fa fa-heart "></i>{{post.likes.count}}</a>
+                  {% else %}
+                  <a style="color: rgb(255, 187, 0);" class="text-warning ml-2" href="{% url 'likes' post.id%}">
+                    <i class="fa fa-heart" style="color: rgb(255, 187, 0);"></i>
+                    {{post.likes.count}}
+                  </a>
+                  {% endif %}
+                  <form action="{% url 'comment' post.id %}" method="post">
+                    {% csrf_token %}
+                    {{comment_form|crispy}} <br>
+                    <input type="submit" class="btn btn-warning" value="Comment">
+                  </form>
                 </div>
               </div>
+              
+
+
+              
+            </div>
           </div>
         </div>
-      </div>
-      {% endfor %}
+        {% endfor %}
       </div>
     </div>
   </div>
 
 
-    
 
 
-    {% endblock %}
+
+  {% endblock %}
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
