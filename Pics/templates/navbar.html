@@ -1,30 +1,34 @@
-<nav class=" nav-tabs sticky-top  navbar-expand-sm bg-light ">
+<nav class="navbar sticky-top navbar-expand-lg" style="background-color: rgb(253, 223, 53);">
+  <div class="nav-brand">
+    <a style="font-family:Architects Daughter; font-size: 23px; color: rgb(255, 123, 0);" href="{% url 'posts' %}"
+      class="nav-link active"><b>instagramMOD</b> </a>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon">collapse</span>
+  </button>
 
-    <ul class="nav sticky-top" id="navId">
-      <li class="nav-item">
-        <a style="font-family:Architects Daughter; font-size: 23px; color: orangered;" href="{% url 'posts' %}" class="nav-link active">instagramMOD</a>
-      </li>
-      {% if user.is_authenticated %}
-      <li class="nav-item">
-        <a style="font-family: Kalam; font-size: 22px; color: rgb(168, 97, 97);" href="{% url 'createpost' %}" class="nav-link">post</a>
-      </li>
-      <form class="nav-item" form-inline my-2 my-lg-0 action="{% url 'search' %}" class="text-black" method="get">
-        {% csrf_token %}
-        <input style="width: 39vh; text-align: center;" type="text" name="post" class="form-control text-black"
-          placeholder="search">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      </form>
-      <li  style="font-family: Kalam; font-size: 22px; " class="nav-item dropdown" style="float: left; ">
-        <a class="nav-link dropdown-toggle" style="color: rgb(168, 97, 97)" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-          aria-expanded="false">Menu</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="{% url 'profile' %}">Account</a>
-          <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#tab4Id">Action</a>
-        </div>
-      </li>
-    </ul>
+    <div class="nav-item">
+      <a style="font-family: Special Elite; font-size: 20px; color: rgb(168, 97, 97);" href="{% url 'createpost' %}"
+        class="nav-link">post</a>
+    </div>
+    <div class="search_bar ml-auto">
+      <div style="text-align: center; margin-top: -0.10%; margin-left: 15%">
+        <form action="{% url 'search' %}" class="text-black" method="get">
+          {% csrf_token %}
+          <input type="text" name="post" class="form-control text-black" placeholder="search">
+
+        </form>
+      </div>
+    </div>
+    <div style="font-family: Special Elite; font-size: 20px; " class="nav-item dropdown" style="float: left; ">
+      <a class="nav-link dropdown-toggle" style="color: rgb(168, 97, 97)" data-toggle="dropdown" href="#" role="button"
+        aria-haspopup="true" aria-expanded="false">Menu</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'profile' %}">Account</a>
+        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
     <div class="tab-content">
       <div class="tab-pane fade show active" id="tab1Id" role="tabpanel"></div>
       <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
@@ -32,10 +36,9 @@
       <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
       <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
     </div>
-    
+
   </div>
 </nav>
-{% endif %}
 
 <script>
   $('#navId a').click(e => {
@@ -43,6 +46,3 @@
     $(this).tab('show');
   });
 </script>
-
-
-
