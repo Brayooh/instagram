@@ -7,7 +7,7 @@ from django.http import Http404
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.png', upload_to='profile_pics/')
+    image = models.ImageField(upload_to='profile_pics/')
     bio = models.CharField(max_length=255)
 
     def __str__(self):
