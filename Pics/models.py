@@ -15,7 +15,7 @@ class Profile(models.Model):
 
     class Meta:
         db_table = 'profile'
-
+        
     @receiver(post_save, sender=User)
     def update_create_profile(sender,instance,created, **kwargs):
         if created:
