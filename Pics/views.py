@@ -29,7 +29,7 @@ def registration(request):
     context = {
         'form':form,
     }
-    return render(request, 'accounts/register.html', context)
+    return render(request, 'registration/register.html', context)
 
 
 @login_required
